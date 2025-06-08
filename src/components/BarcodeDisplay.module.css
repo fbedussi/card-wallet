@@ -1,0 +1,6 @@
+/* Barcode Display Styles */
+.barcodeCanvas {
+  border: 1px solid #dee2e6;
+  border-radius: 4px;
+  background-color: #ffffff;
+}

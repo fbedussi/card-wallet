@@ -1,5 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import JsBarcode from 'jsbarcode';
+import styles from './BarcodeDisplay.module.css';
 
 interface BarcodeDisplayProps {
     value: string;
@@ -52,11 +53,7 @@ export const BarcodeDisplay: React.FC<BarcodeDisplayProps> = ({
     return (
         <canvas
             ref={canvasRef}
-            style={{
-                border: '1px solid #dee2e6',
-                borderRadius: '4px',
-                backgroundColor: '#ffffff'
-            }}
+            className={styles.barcodeCanvas}
         />
     );
 };

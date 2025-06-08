@@ -1,5 +1,6 @@
 import React, { useRef, useEffect, useState } from 'react';
 import { BrowserMultiFormatReader } from '@zxing/library';
+import styles from './BarcodeScanner.module.css';
 
 interface BarcodeScannerProps {
     onScan: (code: string) => void;
@@ -68,82 +69,22 @@ export const BarcodeScanner: React.FC<BarcodeScannerProps> = ({
     if (!isActive) return null;
 
     return (
-        <div className="scanner-container">
+        <div className={styles.scannerContainer}>
             <video
                 ref={videoRef}
-                className="scanner-video"
-                style={{
-                    width: '100%',
-                    maxWidth: '400px',
-                    height: 'auto',
-                    border: '2px solid #007bff',
-                    borderRadius: '8px'
-                }}
+                className={styles.scannerVideo}
                 autoPlay
                 playsInline
                 muted
             />
-            <div className="scanner-overlay">
-                <div className="scan-frame" style={{
-                    position: 'absolute',
-                    top: '50%',
-                    left: '50%',
-                    transform: 'translate(-50%, -50%)',
-                    width: '200px',
-                    height: '200px',
-                    border: '2px solid #ff6b6b',
-                    borderRadius: '8px',
-                    pointerEvents: 'none'
-                }}>
-                    <div style={{
-                        position: 'absolute',
-                        top: '-10px',
-                        left: '-10px',
-                        right: '-10px',
-                        bottom: '-10px',
-                        border: '2px solid rgba(255, 107, 107, 0.3)',
-                        borderRadius: '12px',
-                        animation: 'pulse 2s infinite'
-                    }} />
+            <div className={styles.scannerOverlay}>
+                <div className={styles.scanFrame}>
+                    <div className={styles.scanFrameOuter} />
                 </div>
-                <p style={{
-                    position: 'absolute',
-                    bottom: '20px',
-                    left: '50%',
-                    transform: 'translateX(-50%)',
-                    color: 'white',
-                    backgroundColor: 'rgba(0, 0, 0, 0.7)',
-                    padding: '8px 16px',
-                    borderRadius: '4px',
-                    margin: 0
-                }}>
+                <p className={styles.scanInstruction}>
                     Position barcode within the frame
                 </p>
             </div>
-
-            <style>{`
-        .scanner-container {
-          position: relative;
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-        }
-        
-        .scanner-overlay {
-          position: absolute;
-          top: 0;
-          left: 0;
-          right: 0;
-          bottom: 0;
-          pointer-events: none;
-        }
-        
-        @keyframes pulse {
-          0% { opacity: 1; }
-          50% { opacity: 0.5; }
-          100% { opacity: 1; }
-        }
-      `}</style>
         </div>
     );
 };
