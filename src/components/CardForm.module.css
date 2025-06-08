@@ -50,17 +50,17 @@
 
 .formGroup input:focus {
   outline: none;
-  border-color: #309898;
+  border-color: var(--col-primary);
   box-shadow: 0 0 0 2px rgba(48, 152, 152, 0.25);
 }
 
 .formGroup input.error {
-  border-color: #CB0404;
+  border-color: var(--col-accent2);
 }
 
 .errorMessage {
   display: block;
-  color: #CB0404;
+  color: var(--col-accent2);
   font-size: 0.875rem;
   margin-top: 0.25rem;
 }
@@ -96,11 +96,12 @@
 
 .btnPrimary {
   color: white;
-  background-color: #309898;
-  border-color: #309898;
+  background-color: var(--col-primary);
+  border-color: var(--col-primary);
 }
 
 .btnPrimary:hover {
-  background-color: #267a7a;
-  border-color: #267a7a;
+  background-color: var(--col-primary);
+  border-color: var(--col-primary);
+  filter: brightness(0.9);
 }

@@ -11,7 +11,7 @@ interface CardListProps {
 
 export const CardList: React.FC<CardListProps> = ({ cards, onEdit, onDelete }) => {
     // Generate a consistent background color based on card ID
-    const getCardBackgroundColor = (cardId: string) => {
+    const getCardColorClass = (cardId: string) => {
         // Use card ID to generate a consistent hash
         let hash = 0;
         for (let i = 0; i < cardId.length; i++) {
@@ -20,15 +20,15 @@ export const CardList: React.FC<CardListProps> = ({ cards, onEdit, onDelete }) =
             hash = hash & hash; // Convert to 32-bit integer
         }
 
-        // Use solid colors from the specified color palette
-        const colors = [
-            '#309898',      // Teal
-            '#FF9F00',      // Orange
-            '#F4631E',      // Orange-red
-            '#CB0404',      // Red
+        // Use CSS classes with custom properties
+        const colorClasses = [
+            styles.colorTeal,      // --col-teal
+            styles.colorOrange,    // --col-orange  
+            styles.colorOrangeRed, // --col-red
+            styles.colorRed,       // --col-retro
         ];
 
-        return colors[Math.abs(hash) % colors.length];
+        return colorClasses[Math.abs(hash) % colorClasses.length];
     };
 
     if (cards.length === 0) {
@@ -46,8 +46,7 @@ export const CardList: React.FC<CardListProps> = ({ cards, onEdit, onDelete }) =
             {cards.map((card) => (
                 <div
                     key={card.id}
-                    className={styles.cardItem}
-                    style={{ background: getCardBackgroundColor(card.id) }}
+                    className={`${styles.cardItem} ${getCardColorClass(card.id)}`}
                 >
                     <div className={styles.cardHeader}>
                         <h3 className={styles.cardName}>{card.name}</h3>
@@ -74,8 +73,8 @@ export const CardList: React.FC<CardListProps> = ({ cards, onEdit, onDelete }) =
                     </div>
 
                     <div className={styles.cardInfo}>
-                        <span className="card-code">Code: {card.code}</span>
-                        <span className="card-date">
+                        <span className={styles.cardCode}>Code: {card.code}</span>
+                        <span className={styles.cardDate}>
                             Added: {card.createdAt.toLocaleDateString()}
                         </span>
                     </div>

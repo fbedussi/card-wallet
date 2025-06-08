@@ -46,17 +46,17 @@
 
 .inputGroup input:focus {
   outline: none;
-  border-color: #309898;
+  border-color: var(--col-primary);
   box-shadow: 0 0 0 3px rgba(48, 152, 152, 0.1);
 }
 
 .inputGroup input.error {
-  border-color: #CB0404;
+  border-color: var(--col-accent2);
 }
 
 .errorText {
   display: block;
-  color: #CB0404;
+  color: var(--col-accent2);
   font-size: 0.9rem;
   margin-top: 0.5rem;
 }
@@ -89,12 +89,13 @@
 
 .btnPrimary {
   color: white;
-  background: #309898;
-  border-color: #309898;
+  background: var(--col-primary);
+  border-color: var(--col-primary);
 }
 
 .btnPrimary:hover {
-  background: #267a7a;
-  border-color: #267a7a;
+  background: var(--col-primary);
+  border-color: var(--col-primary);
   transform: translateY(-1px);
+  filter: brightness(0.9);
 }
