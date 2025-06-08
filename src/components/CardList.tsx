@@ -1,11 +1,11 @@
 import React from 'react';
-import type { CardData } from '../types/Card';
+import type { Card } from '../types/Card';
 import { BarcodeDisplay } from './BarcodeDisplay';
 import styles from './CardList.module.css';
 
 interface CardListProps {
-    cards: CardData[];
-    onEdit: (card: CardData) => void;
+    cards: Card[];
+    onEdit: (card: Card) => void;
     onDelete: (id: string) => void;
 }
 

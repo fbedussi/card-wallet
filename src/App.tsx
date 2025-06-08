@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import type { Card, CardData } from './types/Card';
+import type { Card } from './types/Card';
 import { CardStorage } from './utils/CardStorage';
 import { BarcodeScanner } from './components/BarcodeScanner';
 import { CardList } from './components/CardList';
@@ -10,9 +10,9 @@ import './App.css';
 type View = 'list' | 'scan' | 'manual' | 'form';
 
 function App() {
-  const [cards, setCards] = useState<CardData[]>([]);
+  const [cards, setCards] = useState<Card[]>([]);
   const [currentView, setCurrentView] = useState<View>('list');
-  const [editingCard, setEditingCard] = useState<CardData | null>(null);
+  const [editingCard, setEditingCard] = useState<Card | null>(null);
   const [scannedCode, setScannedCode] = useState<string>('');
   const [notification, setNotification] = useState<{ message: string; type: 'success' | 'error' } | null>(null);
 
@@ -45,7 +45,7 @@ function App() {
     showNotification(error, 'error');
   };
 
-  const handleSaveCard = (card: Card) => {
+  const handleSaveCard = (card: Omit<Card, 'createdAt' | 'updatedAt'>) => {
     try {
       if (editingCard) {
         CardStorage.updateCard(editingCard.id, card);
@@ -63,7 +63,7 @@ function App() {
     }
   };
 
-  const handleEditCard = (card: CardData) => {
+  const handleEditCard = (card: Card) => {
     setEditingCard(card);
     setCurrentView('form');
   };
@@ -112,7 +112,7 @@ function App() {
           loadCards();
           showNotification(`Successfully imported ${result.imported} cards!`, 'success');
         } else {
-          showNotification(`Import failed: ${result.errors.join(', ')}`, 'error');
+          showNotification(`Import failed: ${result.error}`, 'error');
         }
       } catch (error) {
         showNotification('Failed to read import file', 'error');

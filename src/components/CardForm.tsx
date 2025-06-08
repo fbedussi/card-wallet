@@ -4,7 +4,7 @@ import styles from './CardForm.module.css';
 
 interface CardFormProps {
     card?: Card | null;
-    onSave: (card: Card) => void;
+    onSave: (card: Omit<Card, 'createdAt' | 'updatedAt'>) => void;
     onCancel: () => void;
     scannedCode?: string;
 }
@@ -55,7 +55,7 @@ export const CardForm: React.FC<CardFormProps> = ({
 
         if (!validateForm()) return;
 
-        const cardData: Card = {
+        const cardData: Omit<Card, 'createdAt' | 'updatedAt'> = {
             id: card?.id || `card_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`,
             name: name.trim(),
             code: parseInt(code.trim(), 10)

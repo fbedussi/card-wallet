@@ -1,101 +1,101 @@
 /* Manual Barcode Input Styles */
 .manualInputContainer {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 300px;
-  padding: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 300px;
+    padding: 1rem;
 }
 
 .manualInputCard {
-  background: white;
-  border-radius: 12px;
-  padding: 2rem;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  border: 1px solid #e9ecef;
-  width: 100%;
-  max-width: 400px;
-  text-align: center;
+    background: white;
+    border-radius: 12px;
+    padding: 2rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border: 1px solid #e9ecef;
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
 }
 
 .manualInputCard h3 {
-  margin: 0 0 0.5rem 0;
-  color: #495057;
-  font-size: 1.3rem;
+    margin: 0 0 0.5rem 0;
+    color: #495057;
+    font-size: 1.3rem;
 }
 
 .manualInputCard p {
-  margin: 0 0 2rem 0;
-  color: #6c757d;
+    margin: 0 0 2rem 0;
+    color: #6c757d;
 }
 
 .inputGroup {
-  margin-bottom: 2rem;
+    margin-bottom: 2rem;
 }
 
 .inputGroup input {
-  width: 100%;
-  padding: 1rem;
-  border: 2px solid #ced4da;
-  border-radius: 8px;
-  font-size: 1.1rem;
-  text-align: center;
-  box-sizing: border-box;
-  transition: border-color 0.2s ease;
+    width: 100%;
+    padding: 1rem;
+    border: 2px solid #ced4da;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    text-align: center;
+    box-sizing: border-box;
+    transition: border-color 0.2s ease;
 }
 
 .inputGroup input:focus {
-  outline: none;
-  border-color: var(--col-primary);
-  box-shadow: 0 0 0 3px rgba(48, 152, 152, 0.1);
+    outline: none;
+    border-color: var(--col-primary);
+    box-shadow: 0 0 0 3px rgba(48, 152, 152, 0.1);
 }
 
 .inputGroup input.error {
-  border-color: var(--col-accent2);
+    border-color: var(--col-accent2);
 }
 
 .errorText {
-  display: block;
-  color: var(--col-accent2);
-  font-size: 0.9rem;
-  margin-top: 0.5rem;
+    display: block;
+    color: var(--col-accent2);
+    font-size: 0.9rem;
+    margin-top: 0.5rem;
 }
 
 .buttonGroup {
-  display: flex;
-  gap: 1rem;
-  justify-content: center;
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
 }
 
 .btn {
-  padding: 0.75rem 1.5rem;
-  border: 2px solid;
-  border-radius: 8px;
-  cursor: pointer;
-  font-size: 1rem;
-  transition: all 0.2s ease;
-  background: none;
+    padding: 0.75rem 1.5rem;
+    border: 2px solid;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: all 0.2s ease;
+    background: none;
 }
 
 .btnSecondary {
-  color: #6c757d;
-  border-color: #6c757d;
+    color: #6c757d;
+    border-color: #6c757d;
 }
 
 .btnSecondary:hover {
-  background: #6c757d;
-  color: white;
+    background: #6c757d;
+    color: white;
 }
 
 .btnPrimary {
-  color: white;
-  background: var(--col-primary);
-  border-color: var(--col-primary);
+    color: white;
+    background: var(--col-primary);
+    border-color: var(--col-primary);
 }
 
 .btnPrimary:hover {
-  background: var(--col-primary);
-  border-color: var(--col-primary);
-  transform: translateY(-1px);
-  filter: brightness(0.9);
+    background: var(--col-primary);
+    border-color: var(--col-primary);
+    transform: translateY(-1px);
+    filter: brightness(0.9);
 }
