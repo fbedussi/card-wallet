@@ -22,6 +22,7 @@ export const BarcodeScanner: React.FC<BarcodeScannerProps> = ({
 
         return () => {
             reader.reset();
+            setCodeReader(null);
         };
     }, []);
 

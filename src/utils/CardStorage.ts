@@ -8,8 +8,12 @@ export class CardStorage {
             const stored = localStorage.getItem(STORAGE_KEY);
             if (!stored) return [];
 
-            const cards = JSON.parse(stored);
-            return cards;
+            const cards = JSON.parse(stored) as Card[];
+            return cards.map(card => ({
+                ...card,
+                createdAt: new Date(card.createdAt),
+                updatedAt: new Date(card.updatedAt),
+            }));
         } catch (error) {
             alert(`Error loading cards: ${error}`);
             return [];
@@ -74,7 +78,7 @@ export class CardStorage {
             }
 
             const validCards: Card[] = importedCards
-                .filter((card) => card.id && card.name && typeof card.code === 'number')
+                .filter((card) => card.id && card.name && typeof card.code === 'string')
                 .map(card => ({
                     createdAt: new Date(),
                     updatedAt: new Date(),

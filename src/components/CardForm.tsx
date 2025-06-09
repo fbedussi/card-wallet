@@ -58,7 +58,7 @@ export const CardForm: React.FC<CardFormProps> = ({
         const cardData: Omit<Card, 'createdAt' | 'updatedAt'> = {
             id: card?.id || `card_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`,
             name: name.trim(),
-            code: parseInt(code.trim(), 10)
+            code: code.trim(),
         };
 
         onSave(cardData);

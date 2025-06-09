@@ -1,7 +1,7 @@
 export type Card = {
   id: string;
   name: string;
-  code: number;
+  code: string;
   createdAt: Date;
   updatedAt: Date;
 };
