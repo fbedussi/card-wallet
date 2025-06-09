@@ -7,29 +7,27 @@
 }
 
 .cardItem {
-    background: white;
     border-radius: 12px;
     padding: 1rem;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    position: relative;
     overflow: hidden;
-}
-
-.cardItem::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: rgba(255, 255, 255, 0.7);
-    z-index: 1;
-}
-
-.cardItem>* {
+    border: solid 5px var(--col-background);
     position: relative;
-    z-index: 2;
+
+    &::before {
+        position: absolute;
+        content: "";
+        background-color: var(--col-background);
+        opacity: 0.6;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+    }
+
+    >* {
+        position: relative;
+    }
 }
 
 .cardHeader {
@@ -41,10 +39,8 @@
 
 .cardName {
     margin: 0;
-    color: #2d3748;
     font-size: 1.1rem;
     font-weight: 600;
-    text-shadow: 0 1px 2px rgba(255, 255, 255, 0.8);
 }
 
 .cardActions {
@@ -68,24 +64,16 @@
     justify-content: space-between;
     align-items: center;
     font-size: 0.9rem;
-    color: #4a5568;
     font-weight: 500;
-    text-shadow: 0 1px 2px rgba(255, 255, 255, 0.8);
-}
-
-.cardCode {
-    color: #4a5568;
 }
 
 .cardDate {
-    color: #6c757d;
     font-size: 0.85rem;
 }
 
 .emptyState {
     text-align: center;
     padding: 3rem 1rem;
-    color: #6c757d;
 }
 
 .emptyIcon {
@@ -95,7 +83,6 @@
 
 .emptyState h3 {
     margin: 0 0 0.5rem 0;
-    color: #495057;
 }
 
 .emptyState p {
@@ -119,39 +106,45 @@
     font-size: 0.8rem;
 }
 
-.btnSecondary {
-    color: #6c757d;
-    border-color: #6c757d;
+.btnEdit {
+    background-color: white;
+    border: solid 3px var(--col-primary);
 }
 
-.btnSecondary:hover {
-    background-color: #6c757d;
-    color: white;
-}
-
-.btnDanger {
-    color: #dc3545;
-    border-color: #dc3545;
-}
-
-.btnDanger:hover {
-    background-color: #dc3545;
-    color: white;
+.btnDelete {
+    background-color: white;
+    border: solid 3px var(--col-red);
 }
 
 /* Color variants for cards */
 .colorTeal {
-    background: var(--col-teal) !important;
+    --col-background: var(--col-teal);
 }
 
 .colorOrange {
-    background: var(--col-orange) !important;
+    --col-background: var(--col-orange);
 }
 
 .colorOrangeRed {
-    background: var(--col-red) !important;
+    --col-background: var(--col-red);
 }
 
 .colorRed {
-    background: var(--col-retro) !important;
+    --col-background: var(--col-retro);
+}
+
+.colorRed2 {
+    --col-background: #BB3E00;
+}
+
+.colorOrange2 {
+    --col-background: #F7AD45;
+}
+
+.colorTeal2 {
+    --col-background: #657C6A;
+}
+
+.colorRetro {
+    --col-background: #A2B9A7;
 }

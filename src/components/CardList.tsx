@@ -22,10 +22,14 @@ export const CardList: React.FC<CardListProps> = ({ cards, onEdit, onDelete }) =
 
         // Use CSS classes with custom properties
         const colorClasses = [
-            styles.colorTeal,      // --col-teal
-            styles.colorOrange,    // --col-orange  
-            styles.colorOrangeRed, // --col-red
-            styles.colorRed,       // --col-retro
+            styles.colorTeal,
+            styles.colorOrange,
+            styles.colorOrangeRed,
+            styles.colorRed,
+            styles.colorRed2,
+            styles.colorOrange2,
+            styles.colorTeal2,
+            styles.colorRetro,
         ];
 
         return colorClasses[Math.abs(hash) % colorClasses.length];
@@ -53,14 +57,14 @@ export const CardList: React.FC<CardListProps> = ({ cards, onEdit, onDelete }) =
                         <div className={styles.cardActions}>
                             <button
                                 onClick={() => onEdit(card)}
-                                className={`${styles.btn} ${styles.btnSecondary} ${styles.btnSm}`}
+                                className={`${styles.btn} ${styles.btnEdit} ${styles.btnSm}`}
                                 title="Edit card"
                             >
                                 ✏️
                             </button>
                             <button
                                 onClick={() => onDelete(card.id)}
-                                className={`${styles.btn} ${styles.btnDanger} ${styles.btnSm}`}
+                                className={`${styles.btn} ${styles.btnDelete} ${styles.btnSm}`}
                                 title="Delete card"
                             >
                                 🗑️
