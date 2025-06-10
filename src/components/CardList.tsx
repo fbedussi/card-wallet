@@ -1,16 +1,13 @@
 import React from 'react';
 import type { Card } from '../types/Card';
-import { BarcodeDisplay } from './BarcodeDisplay';
 import styles from './CardList.module.css';
 
 interface CardListProps {
     cards: Card[];
-    onEdit: (card: Card) => void;
-    onDelete: (id: string) => void;
     onCardClick?: (card: Card) => void;
 }
 
-export const CardList: React.FC<CardListProps> = ({ cards, onEdit, onDelete, onCardClick }) => {
+export const CardList: React.FC<CardListProps> = ({ cards, onCardClick }) => {
     // Generate a consistent background color based on card ID
     const getCardColorClass = (cardId: string) => {
         // Use card ID to generate a consistent hash
@@ -56,32 +53,6 @@ export const CardList: React.FC<CardListProps> = ({ cards, onEdit, onDelete, onC
                 >
                     <div className={styles.cardHeader}>
                         <h3 className={styles.cardName}>{card.name}</h3>
-                        <div className={styles.cardActions}>
-                            <button
-                                onClick={(e) => {
-                                    e.stopPropagation();
-                                    onEdit(card);
-                                }}
-                                className={`${styles.btn} ${styles.btnEdit} ${styles.btnSm}`}
-                                title="Edit card"
-                            >
-                                ✏️
-                            </button>
-                            <button
-                                onClick={(e) => {
-                                    e.stopPropagation();
-                                    onDelete(card.id);
-                                }}
-                                className={`${styles.btn} ${styles.btnDelete} ${styles.btnSm}`}
-                                title="Delete card"
-                            >
-                                🗑️
-                            </button>
-                        </div>
-                    </div>
-
-                    <div className={styles.cardBarcode}>
-                        <BarcodeDisplay value={card.code.toString()} />
                     </div>
 
                     <div className={styles.cardInfo}>

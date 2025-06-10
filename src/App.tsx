@@ -187,8 +187,6 @@ function App() {
         return (
           <CardList
             cards={cards}
-            onEdit={handleEditCard}
-            onDelete={handleDeleteCard}
             onCardClick={handleCardClick}
           />
         );
