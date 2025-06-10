@@ -62,6 +62,13 @@ export const CardForm: React.FC<CardFormProps> = ({
         };
 
         onSave(cardData);
+
+        // Clear form fields only for new cards (not when editing)
+        if (!card) {
+            setName('');
+            setCode('');
+            setErrors({});
+        }
     };
 
     return (
