@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import type { Card } from '../types/Card';
 import { BarcodeDisplay } from './BarcodeDisplay';
 import { Modal } from './Modal';
+import { EditIcon, DeleteIcon, ArrowLeftIcon } from './icons';
 import styles from './SingleCardView.module.css';
 
 interface SingleCardViewProps {
@@ -64,7 +65,8 @@ export const SingleCardView: React.FC<SingleCardViewProps> = ({
                     className={styles.backButton}
                     title="Back to card list"
                 >
-                    ← Back
+                    <ArrowLeftIcon size={20} />
+                    Back
                 </button>
                 <div className={styles.actions}>
                     <button
@@ -72,14 +74,16 @@ export const SingleCardView: React.FC<SingleCardViewProps> = ({
                         className={`${styles.btn} ${styles.btnEdit}`}
                         title="Edit card"
                     >
-                        ✏️ Edit
+                        <EditIcon size={16} />
+                        Edit
                     </button>
                     <button
                         onClick={handleDelete}
                         className={`${styles.btn} ${styles.btnDelete}`}
                         title="Delete card"
                     >
-                        🗑️ Delete
+                        <DeleteIcon size={16} />
+                        Delete
                     </button>
                 </div>
             </div>

@@ -1,5 +1,6 @@
 import React from 'react';
 import type { Card } from '../types/Card';
+import { ScanIcon } from './icons';
 import styles from './CardList.module.css';
 
 interface CardListProps {
@@ -36,7 +37,9 @@ export const CardList: React.FC<CardListProps> = ({ cards, onCardClick }) => {
     if (cards.length === 0) {
         return (
             <div className={styles.emptyState}>
-                <div className={styles.emptyIcon}>📱</div>
+                <div className={styles.emptyIcon}>
+                    <ScanIcon size={48} color="#9ca3af" />
+                </div>
                 <h3>No cards yet</h3>
                 <p>Scan your first fidelity card to get started!</p>
             </div>
@@ -61,12 +64,6 @@ export const CardList: React.FC<CardListProps> = ({ cards, onCardClick }) => {
                             Added: {card.createdAt.toLocaleDateString()}
                         </span>
                     </div>
-
-                    {onCardClick && (
-                        <div className={styles.clickHint}>
-                            👆 Tap to view details
-                        </div>
-                    )}
                 </div>
             ))}
         </div>

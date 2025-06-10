@@ -49,8 +49,7 @@ body {
   display: flex;
   background: white;
   border-bottom: 1px solid #e9ecef;
-  padding: 0;
-  overflow-x: auto;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
 }
 
 .nav-button {
@@ -76,6 +75,21 @@ body {
   color: black;
   border-bottom-color: var(--col-accent);
   background: #f8f9fa;
+}
+
+/* Icon alignment in buttons */
+.nav-button,
+.action-button,
+.file-input-label {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.nav-button svg,
+.action-button svg,
+.file-input-label svg {
+  flex-shrink: 0;
 }
 
 /* Main Content */

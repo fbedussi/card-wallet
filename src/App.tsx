@@ -7,6 +7,7 @@ import { CardForm } from './components/CardForm';
 import { ManualBarcodeInput } from './components/ManualBarcodeInput';
 import { SingleCardView } from './components/SingleCardView';
 import { Modal } from './components/Modal';
+import { CardIcon, ScanIcon, AddIcon, InputIcon, DownloadIcon, UploadIcon } from './components/icons';
 import './App.css';
 
 type View = 'list' | 'scan' | 'manual' | 'single-card';
@@ -155,7 +156,8 @@ function App() {
                 onClick={() => setCurrentView('manual')}
                 className="action-button"
               >
-                📝 Enter Code Manually
+                <InputIcon size={20} style={{ marginRight: '0.5rem' }} />
+                Enter Code Manually
               </button>
             </div>
           </div>
@@ -189,7 +191,7 @@ function App() {
   return (
     <div className="app">
       <header className="app-header">
-        <h1>🎫 Card Wallet</h1>
+        <h1><CardIcon size={32} style={{ marginRight: '0.5rem' }} />Card Wallet</h1>
         <p>Store and manage your fidelity cards</p>
       </header>
 
@@ -198,13 +200,15 @@ function App() {
           className={`nav-button ${currentView === 'list' ? 'active' : ''}`}
           onClick={() => setCurrentView('list')}
         >
-          📋 My Cards ({cards.length})
+          <CardIcon size={20} style={{ marginRight: '0.5rem' }} />
+          My Cards ({cards.length})
         </button>
         <button
           className={`nav-button ${currentView === 'scan' ? 'active' : ''}`}
           onClick={() => setCurrentView('scan')}
         >
-          📱 Scan
+          <ScanIcon size={20} style={{ marginRight: '0.5rem' }} />
+          Scan
         </button>
         <button
           className="nav-button"
@@ -214,7 +218,8 @@ function App() {
             setIsFormModalOpen(true);
           }}
         >
-          ➕ Add
+          <AddIcon size={20} style={{ marginRight: '0.5rem' }} />
+          Add
         </button>
       </nav>
 
@@ -225,10 +230,12 @@ function App() {
       {currentView === 'list' && (
         <div className="app-actions">
           <button onClick={handleExport} className="action-button">
-            💾 Export Cards
+            <DownloadIcon size={20} style={{ marginRight: '0.5rem' }} />
+            Export Cards
           </button>
           <label className="action-button file-input-label">
-            📁 Import Cards
+            <UploadIcon size={20} style={{ marginRight: '0.5rem' }} />
+            Import Cards
             <input
               type="file"
               accept=".json"
