@@ -5,14 +5,16 @@ import { BarcodeScanner } from './components/BarcodeScanner';
 import { CardList } from './components/CardList';
 import { CardForm } from './components/CardForm';
 import { ManualBarcodeInput } from './components/ManualBarcodeInput';
+import { SingleCardView } from './components/SingleCardView';
 import './App.css';
 
-type View = 'list' | 'scan' | 'manual' | 'form';
+type View = 'list' | 'scan' | 'manual' | 'form' | 'single-card';
 
 function App() {
   const [cards, setCards] = useState<Card[]>([]);
   const [currentView, setCurrentView] = useState<View>('list');
   const [editingCard, setEditingCard] = useState<Card | null>(null);
+  const [selectedCard, setSelectedCard] = useState<Card | null>(null);
   const [scannedCode, setScannedCode] = useState<string>('');
   const [notification, setNotification] = useState<{ message: string; type: 'success' | 'error' } | null>(null);
 
@@ -66,6 +68,16 @@ function App() {
   const handleEditCard = (card: Card) => {
     setEditingCard(card);
     setCurrentView('form');
+  };
+
+  const handleCardClick = (card: Card) => {
+    setSelectedCard(card);
+    setCurrentView('single-card');
+  };
+
+  const handleBackToList = () => {
+    setSelectedCard(null);
+    setCurrentView('list');
   };
 
   const handleDeleteCard = (id: string) => {
@@ -162,12 +174,22 @@ function App() {
             }}
           />
         );
+      case 'single-card':
+        return selectedCard ? (
+          <SingleCardView
+            card={selectedCard}
+            onBack={handleBackToList}
+            onEdit={handleEditCard}
+            onDelete={handleDeleteCard}
+          />
+        ) : null;
       default:
         return (
           <CardList
             cards={cards}
             onEdit={handleEditCard}
             onDelete={handleDeleteCard}
+            onCardClick={handleCardClick}
           />
         );
     }

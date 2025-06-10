@@ -1,0 +1,213 @@
+.singleCardView {
+    padding: 1rem;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.backButton {
+    padding: 0.75rem 1rem;
+    background: var(--color-secondary);
+    color: white;
+    border: none;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 500;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.backButton:hover {
+    background: var(--color-secondary-dark);
+    transform: translateY(-1px);
+}
+
+.actions {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+}
+
+.btn {
+    padding: 0.75rem 1rem;
+    border: none;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 500;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.btnEdit {
+    background: var(--color-primary);
+    color: white;
+}
+
+.btnEdit:hover {
+    background: var(--color-primary-dark);
+    transform: translateY(-1px);
+}
+
+.btnDelete {
+    background: var(--color-danger);
+    color: white;
+}
+
+.btnDelete:hover {
+    background: var(--color-danger-dark);
+    transform: translateY(-1px);
+}
+
+.cardContainer {
+    border-radius: 1rem;
+    padding: 2rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    background-color: var(--col-background);
+}
+
+.cardContent {
+    text-align: center;
+}
+
+.cardName {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 2rem;
+    color: white;
+}
+
+.barcodeContainer {
+    background: white;
+    border-radius: 0.75rem;
+    padding: 2rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+}
+
+.cardDetails {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    text-align: left;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 0.75rem;
+    padding: 1.5rem;
+    color: var(--color-text);
+}
+
+.detailItem {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.detailLabel {
+    font-weight: 600;
+    color: var(--color-text-secondary);
+}
+
+.detailValue {
+    font-weight: 500;
+    word-break: break-all;
+}
+
+.instructions {
+    text-align: center;
+    background: var(--color-info);
+    color: white;
+    padding: 1rem;
+    border-radius: 0.75rem;
+    font-size: 1rem;
+    margin-top: 1rem;
+}
+
+/* Color schemes - same as CardList */
+.colorTeal {
+    --col-background: var(--col-teal);
+}
+
+.colorOrange {
+    --col-background: var(--col-orange);
+}
+
+.colorOrangeRed {
+    --col-background: var(--col-red);
+}
+
+.colorRed {
+    --col-background: var(--col-retro);
+}
+
+.colorRed2 {
+    --col-background: #BB3E00;
+}
+
+.colorOrange2 {
+    --col-background: #F7AD45;
+}
+
+.colorTeal2 {
+    --col-background: #657C6A;
+}
+
+.colorRetro {
+    --col-background: #A2B9A7;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+    .singleCardView {
+        padding: 0.5rem;
+    }
+
+    .header {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .actions {
+        justify-content: center;
+    }
+
+    .cardContainer {
+        padding: 1.5rem;
+    }
+
+    .cardName {
+        font-size: 1.5rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .barcodeContainer {
+        padding: 1.5rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .cardDetails {
+        padding: 1rem;
+    }
+
+    .detailItem {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.25rem;
+    }
+}

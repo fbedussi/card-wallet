@@ -30,6 +30,28 @@
     }
 }
 
+.clickable {
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.clickable:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+}
+
+.clickable:active {
+    transform: translateY(0);
+}
+
+.clickHint {
+    text-align: center;
+    font-size: 0.8rem;
+    opacity: 0.7;
+    margin-top: 0.5rem;
+    font-weight: 500;
+}
+
 .cardHeader {
     display: flex;
     justify-content: space-between;

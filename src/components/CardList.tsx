@@ -7,9 +7,10 @@ interface CardListProps {
     cards: Card[];
     onEdit: (card: Card) => void;
     onDelete: (id: string) => void;
+    onCardClick?: (card: Card) => void;
 }
 
-export const CardList: React.FC<CardListProps> = ({ cards, onEdit, onDelete }) => {
+export const CardList: React.FC<CardListProps> = ({ cards, onEdit, onDelete, onCardClick }) => {
     // Generate a consistent background color based on card ID
     const getCardColorClass = (cardId: string) => {
         // Use card ID to generate a consistent hash
@@ -50,20 +51,27 @@ export const CardList: React.FC<CardListProps> = ({ cards, onEdit, onDelete }) =
             {cards.map((card) => (
                 <div
                     key={card.id}
-                    className={`${styles.cardItem} ${getCardColorClass(card.id)}`}
+                    className={`${styles.cardItem} ${getCardColorClass(card.id)} ${onCardClick ? styles.clickable : ''}`}
+                    onClick={onCardClick ? () => onCardClick(card) : undefined}
                 >
                     <div className={styles.cardHeader}>
                         <h3 className={styles.cardName}>{card.name}</h3>
                         <div className={styles.cardActions}>
                             <button
-                                onClick={() => onEdit(card)}
+                                onClick={(e) => {
+                                    e.stopPropagation();
+                                    onEdit(card);
+                                }}
                                 className={`${styles.btn} ${styles.btnEdit} ${styles.btnSm}`}
                                 title="Edit card"
                             >
                                 ✏️
                             </button>
                             <button
-                                onClick={() => onDelete(card.id)}
+                                onClick={(e) => {
+                                    e.stopPropagation();
+                                    onDelete(card.id);
+                                }}
                                 className={`${styles.btn} ${styles.btnDelete} ${styles.btnSm}`}
                                 title="Delete card"
                             >
@@ -82,6 +90,12 @@ export const CardList: React.FC<CardListProps> = ({ cards, onEdit, onDelete }) =
                             Added: {card.createdAt.toLocaleDateString()}
                         </span>
                     </div>
+
+                    {onCardClick && (
+                        <div className={styles.clickHint}>
+                            👆 Tap to view details
+                        </div>
+                    )}
                 </div>
             ))}
         </div>
