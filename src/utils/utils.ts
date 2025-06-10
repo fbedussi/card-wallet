@@ -1,0 +1,1 @@
+export const calculateCardColorHue = (cardCode: string) => Number(cardCode.substring(0, 3)) / 999 * 350

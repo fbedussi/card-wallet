@@ -4,6 +4,7 @@ import { BarcodeDisplay } from './BarcodeDisplay';
 import { Modal } from './Modal';
 import { EditIcon, DeleteIcon, ArrowLeftIcon } from './icons';
 import styles from './SingleCardView.module.css';
+import { calculateCardColorHue } from '../utils/utils';
 
 interface SingleCardViewProps {
     card: Card;
@@ -88,7 +89,10 @@ export const SingleCardView: React.FC<SingleCardViewProps> = ({
                 </div>
             </div>
 
-            <div className={`${styles.cardContainer} ${getCardColorClass(card.id)}`}>
+            <div
+                className={`${styles.cardContainer}`}
+                style={{ backgroundColor: `hsl(${calculateCardColorHue(card.code)}deg 60% 60%)` }}
+            >
                 <div className={styles.cardContent}>
                     <h1 className={styles.cardName}>{card.name}</h1>
 

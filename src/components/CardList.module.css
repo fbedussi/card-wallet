@@ -13,6 +13,17 @@
     overflow: hidden;
     border: solid 5px var(--col-background);
     position: relative;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+
+    &:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+    }
+
+    &:active {
+        transform: translateY(0);
+    }
 
     &::before {
         position: absolute;
@@ -28,20 +39,6 @@
     >* {
         position: relative;
     }
-}
-
-.clickable {
-    cursor: pointer;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-
-.clickable:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
-}
-
-.clickable:active {
-    transform: translateY(0);
 }
 
 .clickHint {
@@ -138,39 +135,6 @@
 .btnDelete {
     background-color: white;
     border: solid 3px var(--col-red);
-}
-
-/* Color variants for cards */
-.colorTeal {
-    --col-background: var(--col-teal);
-}
-
-.colorOrange {
-    --col-background: var(--col-orange);
-}
-
-.colorOrangeRed {
-    --col-background: var(--col-red);
-}
-
-.colorRed {
-    --col-background: var(--col-retro);
-}
-
-.colorRed2 {
-    --col-background: #BB3E00;
-}
-
-.colorOrange2 {
-    --col-background: #F7AD45;
-}
-
-.colorTeal2 {
-    --col-background: #657C6A;
-}
-
-.colorRetro {
-    --col-background: #A2B9A7;
 }
 
 /* Mobile responsiveness */

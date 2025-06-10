@@ -2,6 +2,7 @@ import React from 'react';
 import type { Card } from '../types/Card';
 import { ScanIcon } from './icons';
 import styles from './CardList.module.css';
+import { calculateCardColorHue } from '../utils/utils';
 
 interface CardListProps {
     cards: Card[];
@@ -9,31 +10,6 @@ interface CardListProps {
 }
 
 export const CardList: React.FC<CardListProps> = ({ cards, onCardClick }) => {
-    // Generate a consistent background color based on card ID
-    const getCardColorClass = (cardId: string) => {
-        // Use card ID to generate a consistent hash
-        let hash = 0;
-        for (let i = 0; i < cardId.length; i++) {
-            const char = cardId.charCodeAt(i);
-            hash = ((hash << 5) - hash) + char;
-            hash = hash & hash; // Convert to 32-bit integer
-        }
-
-        // Use CSS classes with custom properties
-        const colorClasses = [
-            styles.colorTeal,
-            styles.colorOrange,
-            styles.colorOrangeRed,
-            styles.colorRed,
-            styles.colorRed2,
-            styles.colorOrange2,
-            styles.colorTeal2,
-            styles.colorRetro,
-        ];
-
-        return colorClasses[Math.abs(hash) % colorClasses.length];
-    };
-
     if (cards.length === 0) {
         return (
             <div className={styles.emptyState}>
@@ -51,7 +27,8 @@ export const CardList: React.FC<CardListProps> = ({ cards, onCardClick }) => {
             {cards.map((card) => (
                 <div
                     key={card.id}
-                    className={`${styles.cardItem} ${getCardColorClass(card.id)} ${onCardClick ? styles.clickable : ''}`}
+                    className={`${styles.cardItem}`}
+                    style={{ backgroundColor: `hsl(${calculateCardColorHue(card.code)}deg 60% 60%)` }}
                     onClick={onCardClick ? () => onCardClick(card) : undefined}
                 >
                     <div className={styles.cardHeader}>
