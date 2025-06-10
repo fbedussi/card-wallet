@@ -104,10 +104,6 @@ export const SingleCardView: React.FC<SingleCardViewProps> = ({
                     </div>
                 </div>
             </div>
-
-            <div className={styles.instructions}>
-                <p>💡 Show this barcode at the store to earn points or get discounts</p>
-            </div>
         </div>
     );
 };

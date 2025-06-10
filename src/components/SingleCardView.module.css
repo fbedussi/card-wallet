@@ -129,16 +129,6 @@
     word-break: break-all;
 }
 
-.instructions {
-    text-align: center;
-    background: var(--color-info);
-    color: white;
-    padding: 1rem;
-    border-radius: 0.75rem;
-    font-size: 1rem;
-    margin-top: 1rem;
-}
-
 /* Color schemes - same as CardList */
 .colorTeal {
     --col-background: var(--col-teal);
