@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 import type { Card } from '../types/Card';
 import { BarcodeDisplay } from './BarcodeDisplay';
+import { Modal } from './Modal';
 import styles from './SingleCardView.module.css';
 
 interface SingleCardViewProps {
@@ -16,11 +17,20 @@ export const SingleCardView: React.FC<SingleCardViewProps> = ({
     onEdit,
     onDelete
 }) => {
+    const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
+
     const handleDelete = () => {
-        if (window.confirm('Are you sure you want to delete this card?')) {
-            onDelete(card.id);
-            onBack();
-        }
+        setIsDeleteModalOpen(true);
+    };
+
+    const handleConfirmDelete = () => {
+        onDelete(card.id);
+        setIsDeleteModalOpen(false);
+        onBack();
+    };
+
+    const handleCancelDelete = () => {
+        setIsDeleteModalOpen(false);
     };
 
     // Generate a consistent background color based on card ID
@@ -104,6 +114,34 @@ export const SingleCardView: React.FC<SingleCardViewProps> = ({
                     </div>
                 </div>
             </div>
+
+            <Modal
+                isOpen={isDeleteModalOpen}
+                onClose={handleCancelDelete}
+                title="Delete Card"
+                showCloseButton={false}
+            >
+                <div className={styles.deleteConfirmation}>
+                    <p>Are you sure you want to delete this card?</p>
+                    <p className={styles.cardNameToDelete}>"{card.name}"</p>
+                    <p>This action cannot be undone.</p>
+
+                    <div className={styles.confirmationActions}>
+                        <button
+                            onClick={handleCancelDelete}
+                            className={`${styles.btn} ${styles.btnSecondary}`}
+                        >
+                            Cancel
+                        </button>
+                        <button
+                            onClick={handleConfirmDelete}
+                            className={`${styles.btn} ${styles.btnDanger}`}
+                        >
+                            Delete Card
+                        </button>
+                    </div>
+                </div>
+            </Modal>
         </div>
     );
 };

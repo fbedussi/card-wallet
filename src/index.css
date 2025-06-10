@@ -19,6 +19,7 @@
 
   --col-primary: var(--col-teal);
   --col-secondary: var(--col-orange);
+  --col-danger: var(--col-retro);
   --col-accent: var(--col-red);
   --col-accent2: var(--col-retro);
 }

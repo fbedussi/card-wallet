@@ -53,23 +53,13 @@
 }
 
 .btnEdit {
-    background: var(--color-primary);
+    background-color: var(--col-primary);
     color: white;
-}
-
-.btnEdit:hover {
-    background: var(--color-primary-dark);
-    transform: translateY(-1px);
 }
 
 .btnDelete {
-    background: var(--color-danger);
+    background-color: var(--col-danger);
     color: white;
-}
-
-.btnDelete:hover {
-    background: var(--color-danger-dark);
-    transform: translateY(-1px);
 }
 
 .cardContainer {
@@ -199,5 +189,64 @@
         flex-direction: column;
         align-items: flex-start;
         gap: 0.25rem;
+    }
+}
+
+/* Delete confirmation modal styles */
+.deleteConfirmation {
+    text-align: center;
+    padding: 1rem 0;
+}
+
+.deleteConfirmation p {
+    margin-bottom: 1rem;
+    line-height: 1.5;
+}
+
+.cardNameToDelete {
+    font-weight: bold;
+    color: var(--color-danger, #ef4444);
+    font-size: 1.1rem;
+    background: #fef2f2;
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    border: 1px solid #fecaca;
+}
+
+.confirmationActions {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    margin-top: 2rem;
+    flex-wrap: wrap;
+}
+
+.btnSecondary {
+    background: #6b7280;
+    color: white;
+}
+
+.btnSecondary:hover {
+    background: #4b5563;
+}
+
+.btnDanger {
+    background: var(--color-danger, #ef4444);
+    color: white;
+}
+
+.btnDanger:hover {
+    background: var(--color-danger-dark, #dc2626);
+}
+
+/* Mobile responsiveness for confirmation modal */
+@media (max-width: 768px) {
+    .confirmationActions {
+        flex-direction: column;
+    }
+
+    .confirmationActions .btn {
+        width: 100%;
+        justify-content: center;
     }
 }

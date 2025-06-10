@@ -65,48 +65,43 @@ export const CardForm: React.FC<CardFormProps> = ({
     };
 
     return (
-        <div className={styles.cardFormOverlay}>
-            <div className={styles.cardForm}>
-                <h3>{card ? 'Edit Card' : 'Add New Card'}</h3>
 
-                <form onSubmit={handleSubmit}>
-                    <div className={styles.formGroup}>
-                        <label htmlFor="cardName">Card Name *</label>
-                        <input
-                            id="cardName"
-                            type="text"
-                            value={name}
-                            onChange={(e) => setName(e.target.value)}
-                            placeholder="e.g., Starbucks, Gym Membership"
-                            className={errors.name ? styles.error : ''}
-                            autoFocus
-                        />
-                        {errors.name && <span className={styles.errorMessage}>{errors.name}</span>}
-                    </div>
-
-                    <div className={styles.formGroup}>
-                        <label htmlFor="cardCode">Barcode Number *</label>
-                        <input
-                            id="cardCode"
-                            type="text"
-                            value={code}
-                            onChange={(e) => setCode(e.target.value)}
-                            placeholder="Enter or scan barcode number"
-                            className={errors.code ? styles.error : ''}
-                        />
-                        {errors.code && <span className={styles.errorMessage}>{errors.code}</span>}
-                    </div>
-
-                    <div className={styles.formActions}>
-                        <button type="button" onClick={onCancel} className={`${styles.btn} ${styles.btnSecondary}`}>
-                            Cancel
-                        </button>
-                        <button type="submit" className={`${styles.btn} ${styles.btnPrimary}`}>
-                            {card ? 'Update' : 'Add'} Card
-                        </button>
-                    </div>
-                </form>
+        <form onSubmit={handleSubmit}>
+            <div className={styles.formGroup}>
+                <label htmlFor="cardName">Card Name *</label>
+                <input
+                    id="cardName"
+                    type="text"
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
+                    placeholder="e.g., Starbucks, Gym Membership"
+                    className={errors.name ? styles.error : ''}
+                    autoFocus
+                />
+                {errors.name && <span className={styles.errorMessage}>{errors.name}</span>}
             </div>
-        </div>
+
+            <div className={styles.formGroup}>
+                <label htmlFor="cardCode">Barcode Number *</label>
+                <input
+                    id="cardCode"
+                    type="text"
+                    value={code}
+                    onChange={(e) => setCode(e.target.value)}
+                    placeholder="Enter or scan barcode number"
+                    className={errors.code ? styles.error : ''}
+                />
+                {errors.code && <span className={styles.errorMessage}>{errors.code}</span>}
+            </div>
+
+            <div className={styles.formActions}>
+                <button type="button" onClick={onCancel} className={`${styles.btn} ${styles.btnSecondary}`}>
+                    Cancel
+                </button>
+                <button type="submit" className={`${styles.btn} ${styles.btnPrimary}`}>
+                    {card ? 'Update' : 'Add'} Card
+                </button>
+            </div>
+        </form>
     );
 };

@@ -6,9 +6,10 @@ import { CardList } from './components/CardList';
 import { CardForm } from './components/CardForm';
 import { ManualBarcodeInput } from './components/ManualBarcodeInput';
 import { SingleCardView } from './components/SingleCardView';
+import { Modal } from './components/Modal';
 import './App.css';
 
-type View = 'list' | 'scan' | 'manual' | 'form' | 'single-card';
+type View = 'list' | 'scan' | 'manual' | 'single-card';
 
 function App() {
   const [cards, setCards] = useState<Card[]>([]);
@@ -16,6 +17,7 @@ function App() {
   const [editingCard, setEditingCard] = useState<Card | null>(null);
   const [selectedCard, setSelectedCard] = useState<Card | null>(null);
   const [scannedCode, setScannedCode] = useState<string>('');
+  const [isFormModalOpen, setIsFormModalOpen] = useState(false);
   const [notification, setNotification] = useState<{ message: string; type: 'success' | 'error' } | null>(null);
 
   useEffect(() => {
@@ -36,7 +38,7 @@ function App() {
     const numericCode = code.replace(/\D/g, '');
     if (numericCode) {
       setScannedCode(numericCode);
-      setCurrentView('form');
+      setIsFormModalOpen(true);
       showNotification('Barcode scanned successfully!', 'success');
     } else {
       showNotification('Invalid barcode format', 'error');
@@ -57,7 +59,7 @@ function App() {
         showNotification('Card added successfully!', 'success');
       }
       loadCards();
-      setCurrentView('list');
+      setIsFormModalOpen(false);
       setEditingCard(null);
       setScannedCode('');
     } catch (error) {
@@ -67,7 +69,7 @@ function App() {
 
   const handleEditCard = (card: Card) => {
     setEditingCard(card);
-    setCurrentView('form');
+    setIsFormModalOpen(true);
   };
 
   const handleCardClick = (card: Card) => {
@@ -80,15 +82,19 @@ function App() {
     setCurrentView('list');
   };
 
+  const handleCloseFormModal = () => {
+    setIsFormModalOpen(false);
+    setEditingCard(null);
+    setScannedCode('');
+  };
+
   const handleDeleteCard = (id: string) => {
-    if (window.confirm('Are you sure you want to delete this card?')) {
-      try {
-        CardStorage.deleteCard(id);
-        loadCards();
-        showNotification('Card deleted successfully!', 'success');
-      } catch (error) {
-        showNotification('Failed to delete card', 'error');
-      }
+    try {
+      CardStorage.deleteCard(id);
+      loadCards();
+      showNotification('Card deleted successfully!', 'success');
+    } catch (error) {
+      showNotification('Failed to delete card', 'error');
     }
   };
 
@@ -161,19 +167,6 @@ function App() {
             onCancel={() => setCurrentView('scan')}
           />
         );
-      case 'form':
-        return (
-          <CardForm
-            card={editingCard}
-            scannedCode={scannedCode}
-            onSave={handleSaveCard}
-            onCancel={() => {
-              setCurrentView('list');
-              setEditingCard(null);
-              setScannedCode('');
-            }}
-          />
-        );
       case 'single-card':
         return selectedCard ? (
           <SingleCardView
@@ -218,7 +211,7 @@ function App() {
           onClick={() => {
             setEditingCard(null);
             setScannedCode('');
-            setCurrentView('form');
+            setIsFormModalOpen(true);
           }}
         >
           ➕ Add
@@ -251,6 +244,19 @@ function App() {
           {notification.message}
         </div>
       )}
+
+      <Modal
+        isOpen={isFormModalOpen}
+        onClose={handleCloseFormModal}
+        title={editingCard ? 'Edit Card' : 'Add New Card'}
+      >
+        <CardForm
+          card={editingCard}
+          scannedCode={scannedCode}
+          onSave={handleSaveCard}
+          onCancel={handleCloseFormModal}
+        />
+      </Modal>
     </div>
   );
 }
