@@ -32,6 +32,25 @@ npm run build
 npm run preview
 ```
 
+## 📦 Deployment
+
+This project is configured for automatic deployment to GitHub Pages.
+
+### GitHub Pages Setup
+1. Push your code to a GitHub repository
+2. Go to repository Settings > Pages
+3. Set Source to "GitHub Actions"
+4. The app will be automatically deployed on every push to the main branch
+
+### Manual Deployment
+```bash
+# Deploy to GitHub Pages manually
+npm run deploy
+```
+
+### Live Demo
+Once deployed, your app will be available at: `https://[username].github.io/card-wallet/`
+
 ## 🛠️ Tech Stack
 
 - **React 19** - Modern React with latest features

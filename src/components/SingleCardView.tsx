@@ -35,29 +35,6 @@ export const SingleCardView: React.FC<SingleCardViewProps> = ({
         setIsDeleteModalOpen(false);
     };
 
-    // Generate a consistent background color based on card ID
-    const getCardColorClass = (cardId: string) => {
-        let hash = 0;
-        for (let i = 0; i < cardId.length; i++) {
-            const char = cardId.charCodeAt(i);
-            hash = ((hash << 5) - hash) + char;
-            hash = hash & hash;
-        }
-
-        const colorClasses = [
-            styles.colorTeal,
-            styles.colorOrange,
-            styles.colorOrangeRed,
-            styles.colorRed,
-            styles.colorRed2,
-            styles.colorOrange2,
-            styles.colorTeal2,
-            styles.colorRetro,
-        ];
-
-        return colorClasses[Math.abs(hash) % colorClasses.length];
-    };
-
     return (
         <div className={styles.singleCardView}>
             <div className={styles.header}>

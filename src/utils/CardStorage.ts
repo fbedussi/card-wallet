@@ -103,7 +103,7 @@ export class CardStorage {
                     `${validCards.length - newCards.length} cards were skipped (duplicate IDs)` :
                     ''
             };
-        } catch (error) {
+        } catch (_error) {
             return { success: false, imported: 0, error: 'Invalid JSON format' };
         }
     }

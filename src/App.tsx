@@ -63,7 +63,7 @@ function App() {
       setIsFormModalOpen(false);
       setEditingCard(null);
       setScannedCode('');
-    } catch (error) {
+    } catch (_error) {
       showNotification('Failed to save card', 'error');
     }
   };
@@ -94,7 +94,7 @@ function App() {
       CardStorage.deleteCard(id);
       loadCards();
       showNotification('Card deleted successfully!', 'success');
-    } catch (error) {
+    } catch (_error) {
       showNotification('Failed to delete card', 'error');
     }
   };
@@ -112,7 +112,7 @@ function App() {
       document.body.removeChild(a);
       URL.revokeObjectURL(url);
       showNotification('Cards exported successfully!', 'success');
-    } catch (error) {
+    } catch (_error) {
       showNotification('Failed to export cards', 'error');
     }
   };
@@ -133,7 +133,7 @@ function App() {
         } else {
           showNotification(`Import failed: ${result.error}`, 'error');
         }
-      } catch (error) {
+      } catch (_error) {
         showNotification('Failed to read import file', 'error');
       }
     };
