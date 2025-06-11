@@ -24,7 +24,6 @@ body {
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
 }
 
-/* Header */
 .app-header {
   background-color: var(--col-primary);
   color: white;
@@ -44,7 +43,6 @@ body {
   opacity: 0.9;
 }
 
-/* Navigation */
 .app-nav {
   display: flex;
   background: white;
@@ -68,7 +66,6 @@ body {
 
 .nav-button:hover {
   background: #f8f9fa;
-  color: #007bff;
 }
 
 .nav-button.active {
@@ -92,7 +89,6 @@ body {
   flex-shrink: 0;
 }
 
-/* Main Content */
 .app-main {
   flex: 1;
   padding: 2rem;
@@ -100,7 +96,6 @@ body {
   min-height: 400px;
 }
 
-/* Actions */
 .app-actions {
   display: flex;
   gap: 1rem;
@@ -123,6 +118,7 @@ body {
   text-decoration: none;
   display: inline-block;
   border-radius: 4px;
+  color: black;
 }
 
 .action-button:hover {
@@ -135,7 +131,6 @@ body {
   position: relative;
 }
 
-/* Notifications */
 .notification {
   position: fixed;
   top: 20px;
@@ -170,7 +165,6 @@ body {
   }
 }
 
-/* Responsive Design */
 @media (max-width: 768px) {
   .app {
     margin: 0;
@@ -204,7 +198,6 @@ body {
   }
 }
 
-/* Dark mode support */
 @media (prefers-color-scheme: dark) {
   body {
     background: linear-gradient(135deg, #2c3e50 0%, #3498db 100%);
@@ -212,7 +205,6 @@ body {
 
   .app {
     background: rgba(45, 52, 64, 0.95);
-    color: #ecf0f1;
   }
 
   .app-nav {
@@ -227,6 +219,7 @@ body {
 
   .nav-button:hover {
     background: #2c3e50;
+    color: white;
   }
 
   .app-main {
