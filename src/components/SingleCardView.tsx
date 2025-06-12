@@ -2,20 +2,18 @@ import React, { useState } from 'react';
 import type { Card } from '../types/Card';
 import { BarcodeDisplay } from './BarcodeDisplay';
 import { Modal } from './Modal';
-import { EditIcon, DeleteIcon, ArrowLeftIcon } from './icons';
+import { EditIcon, DeleteIcon } from './icons';
 import styles from './SingleCardView.module.css';
 import { calculateCardColorHue } from '../utils/utils';
 
 interface SingleCardViewProps {
     card: Card;
-    onBack: () => void;
     onEdit: (card: Card) => void;
     onDelete: (id: string) => void;
 }
 
 export const SingleCardView: React.FC<SingleCardViewProps> = ({
     card,
-    onBack,
     onEdit,
     onDelete
 }) => {
@@ -28,7 +26,6 @@ export const SingleCardView: React.FC<SingleCardViewProps> = ({
     const handleConfirmDelete = () => {
         onDelete(card.id);
         setIsDeleteModalOpen(false);
-        onBack();
     };
 
     const handleCancelDelete = () => {
@@ -38,14 +35,6 @@ export const SingleCardView: React.FC<SingleCardViewProps> = ({
     return (
         <div className={styles.singleCardView}>
             <div className={styles.header}>
-                <button
-                    onClick={onBack}
-                    className={styles.backButton}
-                    title="Back to card list"
-                >
-                    <ArrowLeftIcon size={20} />
-                    Back
-                </button>
                 <div className={styles.actions}>
                     <button
                         onClick={() => onEdit(card)}

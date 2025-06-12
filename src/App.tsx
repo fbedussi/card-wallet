@@ -78,11 +78,6 @@ function App() {
     setCurrentView('single-card');
   };
 
-  const handleBackToList = () => {
-    setSelectedCard(null);
-    setCurrentView('list');
-  };
-
   const handleCloseFormModal = () => {
     setIsFormModalOpen(false);
     setEditingCard(null);
@@ -173,7 +168,6 @@ function App() {
         return selectedCard ? (
           <SingleCardView
             card={selectedCard}
-            onBack={handleBackToList}
             onEdit={handleEditCard}
             onDelete={handleDeleteCard}
           />
