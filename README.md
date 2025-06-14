@@ -1,5 +1,7 @@
 # 🎫 Card Wallet - Fidelity Card Manager
 
+** this app is an experiment of vibe coding **
+
 A Progressive Web App (PWA) built with React + TypeScript for storing and managing fidelity cards as barcodes.
 
 ## ✨ Features
